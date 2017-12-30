@@ -1,0 +1,45 @@
+<h1>Eat-Da-Burger!</h1>
+
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        {{#each burgers}}
+          {{#unless this.devoured}}
+            <div>
+              <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                <button type="submit" class='burgerAvailable'> {{this.burger_name}}</button>
+              </form>
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <div class='burgerEaten'>
+              <div>
+                {{this.burger_name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</main>
+
+<h2>Add A Burger</h2>
+
+<div class="container-fluid">
+ <div class="row">
+  <form action="/burgers" method="POST">
+    <div class="form-group">
+      <input type="text" class="form-control col-lg-6 col-md-6 col-sm-6 col-xs-6" id="name" name="burger_name" placeholder="Uber Delicious Burger">
+      <button type="submit" class="addBurgerButton col-lg-6 col-md-6 col-sm-6 col-xs-6">Add Burger</button>
+    </div>
+      
+  </form>
+ </div>
+</div>
